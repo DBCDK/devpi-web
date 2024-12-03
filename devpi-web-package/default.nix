@@ -19,11 +19,11 @@
 
 buildPythonPackage rec {
   pname = "devpi-web";
-  version = "4.2.0";
+  version = "4.3.0";
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-chR7VaOKiyFWar5OYxng1P+/VE+g7/N0kjlUG2a+JaE=";
+    hash = "sha256-3CwoA9ud4Sx+qsPrbBas0J+qDqeLKsxI8vBA7ae0iLs=";
   };
 
   buildInputs = [
