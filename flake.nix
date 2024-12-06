@@ -16,7 +16,7 @@
       system:
       let
         # I'm to lazy to change this in deployments
-        overlays = [ self.overlay.default ];
+        overlays = [ self.overlays.default ];
         pkgs = import nixpkgs { inherit system overlays; };
       in
       {
@@ -28,7 +28,7 @@
       }
     )
     // {
-      overlay.default = final: prev: {
+      overlays.default = final: prev: {
         devpi-web = (
           final.python3Packages.callPackage ./devpi-web-package {
             # break loop by using unaltered (super) devpi-server
