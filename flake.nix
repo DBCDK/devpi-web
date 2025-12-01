@@ -2,7 +2,7 @@
   description = "devpi-server with the devpi-web plugin.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -15,7 +15,7 @@
     flake-utils.lib.eachDefaultSystem (
       system:
       let
-        # I'm to lazy to change this in deployments
+        # I'm too lazy to change this in deployments
         overlays = [ self.overlays.default ];
         pkgs = import nixpkgs { inherit system overlays; };
       in
