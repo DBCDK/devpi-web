@@ -12,24 +12,29 @@
 , pyramid
 , whoosh
 , devpi-server
-, pyramid_chameleon
-, readme_renderer
+, pyramid-chameleon
+, readme-renderer
 , defusedxml
+, setuptools-changelog-shortener
 }:
 
 buildPythonPackage rec {
-  pname = "devpi-web";
-  version = "4.3.0";
+  pname = "devpi_web";
+  version = "5.0.1";
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-3CwoA9ud4Sx+qsPrbBas0J+qDqeLKsxI8vBA7ae0iLs=";
+    hash = "sha256-Rh+U3AKYXMYIp4pZYG3LITXIap5xaxicnDdqGfl+SB8=";
   };
 
   buildInputs = [
     glibcLocales
     devpi-server
   ];
+
+  buildSystem = [ "setuptools" ];
+
+  pyproject = true;
 
   propagatedBuildInputs = [
     devpi-common
@@ -39,10 +44,11 @@ buildPythonPackage rec {
     beautifulsoup4
     py
     whoosh
-    pyramid_chameleon
+    pyramid-chameleon
+    setuptools-changelog-shortener
     pyramid
     setuptools
-    readme_renderer
+    readme-renderer
   ];
 
   doCheck = false;
