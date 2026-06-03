@@ -37,7 +37,7 @@
         );
 
         devpi-server = prev.devpi-server.overrideAttrs (oa: {
-          propagatedBuildInputs = oa.propagatedBuildInputs ++ [ final.devpi-web ];
+          propagatedBuildInputs = (oa.propagatedBuildInputs or []) ++ [ final.devpi-web ];
         });
 
         meta = with final.lib; {
