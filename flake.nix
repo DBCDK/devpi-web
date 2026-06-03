@@ -32,7 +32,7 @@
         devpi-web = (
           final.python3Packages.callPackage ./devpi-web-package {
             # break loop by using unaltered (super) devpi-server
-            devpi-server = prev.devpi-server;
+            devpi-server = prev.python3Packages.devpi-server;
           }
         );
 
