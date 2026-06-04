@@ -2,7 +2,7 @@
   description = "devpi-server with the devpi-web plugin.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -32,12 +32,12 @@
         devpi-web = (
           final.python3Packages.callPackage ./devpi-web-package {
             # break loop by using unaltered (super) devpi-server
-            devpi-server = prev.python3Packages.devpi-server;
+            devpi-server = prev.devpi-server;
           }
         );
 
         devpi-server = prev.devpi-server.overrideAttrs (oa: {
-          propagatedBuildInputs = (oa.propagatedBuildInputs or []) ++ [ final.devpi-web ];
+          propagatedBuildInputs = oa.propagatedBuildInputs ++ [ final.devpi-web ];
         });
 
         meta = with final.lib; {
